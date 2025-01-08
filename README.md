@@ -1,7 +1,7 @@
 
-# Breast Cancer Detection
+# Titanic Predicion
 
-Simple Flask Web App
+Simple Flask Web App to predict if a Titanic passenger survived or not
 
 
 
