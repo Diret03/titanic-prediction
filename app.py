@@ -12,10 +12,9 @@ def index():
 @app.route('/predict', methods=['POST'])
 def predict():
     features = request.form.to_dict()
-    # print(f'Feautures = {features}')
     result = make_prediction(features)
     app.logger.debug(f"Result: {result}")
-    return render_template('index.html', result=result)
+    return render_template('index.html', result=result, form_data=features)
 
 
 

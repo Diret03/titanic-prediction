@@ -67,10 +67,11 @@
             </label>
             <select name="pclass" required
                     class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors">
-                <option value="" disabled selected>Select class</option>
-                <option value="1">First Class</option>
-                <option value="2">Second Class</option>
-                <option value="3">Third Class</option>
+                <option value="" disabled {% if not form_data %}selected{% endif %}>Select class</option>
+                <option value="1" {% if form_data and form_data.pclass == '1' %}selected{% endif %}>First Class</option>
+                <option value="2" {% if form_data and form_data.pclass == '2' %}selected{% endif %}>Second Class
+                </option>
+                <option value="3" {% if form_data and form_data.pclass == '3' %}selected{% endif %}>Third Class</option>
             </select>
         </div>
 
@@ -81,9 +82,9 @@
             </label>
             <select name="sex" required
                     class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors">
-                <option value="" disabled selected>Select gender</option>
-                <option value="0">Female</option>
-                <option value="1">Male</option>
+                <option value="" disabled {% if not form_data %}selected{% endif %}>Select gender</option>
+                <option value="0" {% if form_data and form_data.sex == '0' %}selected{% endif %}>Female</option>
+                <option value="1" {% if form_data and form_data.sex == '1' %}selected{% endif %}>Male</option>
             </select>
         </div>
 
@@ -94,14 +95,14 @@
             </label>
             <select name="age" required
                     class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors">
-                <option value="" disabled selected>Select age group</option>
-                <option value="1">0-8 years</option>
-                <option value="2">9-15 years</option>
-                <option value="3">16-18 years</option>
-                <option value="4">19-25 years</option>
-                <option value="5">26-40 years</option>
-                <option value="6">41-60 years</option>
-                <option value="7">61-100 years</option>
+                <option value="" disabled {% if not form_data %}selected{% endif %}>Select age group</option>
+                <option value="1" {% if form_data and form_data.age == '1' %}selected{% endif %}>0-8 years</option>
+                <option value="2" {% if form_data and form_data.age == '2' %}selected{% endif %}>9-15 years</option>
+                <option value="3" {% if form_data and form_data.age == '3' %}selected{% endif %}>16-18 years</option>
+                <option value="4" {% if form_data and form_data.age == '4' %}selected{% endif %}>19-25 years</option>
+                <option value="5" {% if form_data and form_data.age == '5' %}selected{% endif %}>26-40 years</option>
+                <option value="6" {% if form_data and form_data.age == '6' %}selected{% endif %}>41-60 years</option>
+                <option value="7" {% if form_data and form_data.age == '7' %}selected{% endif %}>61-100 years</option>
             </select>
         </div>
 
@@ -112,7 +113,8 @@
             </label>
             <input type="number" name="sibsp" min="0" step="1" required
                    class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors"
-                   placeholder="e.g. 1">
+                   placeholder="e.g. 1"
+                   value="{{ form_data.sibsp if form_data else '' }}">
         </div>
 
         <!-- Parch -->
@@ -122,7 +124,8 @@
             </label>
             <input type="number" name="parch" min="0" step="1" required
                    class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors"
-                   placeholder="e.g. 0">
+                   placeholder="e.g. 0"
+                   value="{{ form_data.parch if form_data else '' }}">
         </div>
 
         <!-- Fare -->
@@ -132,7 +135,8 @@
             </label>
             <input type="number" name="fare" step="any" required
                    class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors"
-                   placeholder="e.g. 71.2833">
+                   placeholder="e.g. 71.2833"
+                   value="{{ form_data.fare if form_data else '' }}">
         </div>
 
         <!-- Embarkation -->
@@ -142,13 +146,15 @@
             </label>
             <select name="embarked" required
                     class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-colors">
-                <option value="" disabled selected>Select embarkation port</option>
-                <option value="0">Queenstown (Q)</option>
-                <option value="1">Southampton (S)</option>
-                <option value="2">Cherbourg (C)</option>
+                <option value="" disabled {% if not form_data %}selected{% endif %}>Select embarkation port</option>
+                <option value="0" {% if form_data and form_data.embarked == '0' %}selected{% endif %}>Queenstown (Q)
+                </option>
+                <option value="1" {% if form_data and form_data.embarked == '1' %}selected{% endif %}>Southampton (S)
+                </option>
+                <option value="2" {% if form_data and form_data.embarked == '2' %}selected{% endif %}>Cherbourg (C)
+                </option>
             </select>
         </div>
-
 
         <!-- Buttons Container -->
         <div class="col-span-1 sm:col-span-2 lg:col-span-3 flex justify-center items-center gap-6 mt-8 mb-4">
